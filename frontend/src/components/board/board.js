@@ -28,7 +28,12 @@ class Board extends React.Component {
                 <Header title={this.props.board.name} />
                 <div style={style}>
                     {this.props.lists.map(list => (
-                        <List data={list} activities={this.props.activities.filter(activity => activity.listId == list.id)}/>
+                        <List 
+                            data={list} 
+                            activities={this.props.activities.filter(activity => activity.listId == list.id)}
+                            editActivity={this.props.editActivity}
+                            addActivity={this.props.addActivity}
+                            />
                     )) }
                 </div>
             </div>

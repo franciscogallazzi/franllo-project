@@ -7,92 +7,38 @@ module.exports = function (app, cb) {
 
 
   Board.create({
-      name: 'primer tablero'
+      name: 'Insane Board'
   })
   .then(board => {
-      console.log("board", board);
-      return List.create([{
+    return List.create(
+      [{
           name: 'Backlog',
           boardId: board.id
-      },{
-        name: 'Doing 1',
+      },
+      {
+        name: 'Doing',
         boardId: board.id
-    }
-    ,{
-        name: 'Doing 2',
+      },
+      {
+        name: 'Test',
         boardId: board.id
-    },{
-        name: 'Doing 3',
+      },
+      {
+        name: 'Finalized',
         boardId: board.id
-    },{
-        name: 'Doing 4',
-        boardId: board.id
-    },{
-        name: 'Doing 5',
-        boardId: board.id
-    },{
-        name: 'Doing 6',
-        boardId: board.id
-    }
-
+      }
     ])
   })
   .then(list => {
-      console.log("list", list);
       return Activity.create([{
-          title: 'Actividad A',
+          title: 'Make a coffe',
           listId: 1
       },{
-        title: 'Actividad B',
-        listId: 1
-    },
-    {
-        title: 'Actividad A',
-        listId: 1
-    },{
-      title: 'Actividad B',
-      listId: 1
-    },{
-        title: 'Actividad A',
-        listId: 1
-    },{
-      title: 'Actividad B',
-      listId: 1
-  },{
-    title: 'Actividad A',
-    listId: 1
-},{
-  title: 'Actividad B',
-  listId: 1
-},{
-    title: 'Actividad A',
-    listId: 1
-},{
-  title: 'Actividad B',
-  listId: 1
-},{
-    title: 'Actividad A',
-    listId: 1
-},{
-  title: 'Actividad B',
-  listId: 1
-},{
-    title: 'Actividad A',
-    listId: 1
-},{
-  title: 'Actividad B',
-  listId: 1
-},{
-    title: 'Actividad A en lista 4',
-    listId: 4
-},{
-  title: 'Actividad B',
-  listId: 1
-}
-    ])
+        title: 'Buy a coffe maker',
+        listId:2
+      }])
   })
   .then(activity => {
-    console.log("activity", activity);
     cb();
   })
   .catch(err => {

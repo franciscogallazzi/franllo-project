@@ -4,10 +4,10 @@ module.exports = function (app, cb) {
   let User = app.models.User;
 
   User.create({
-      email: 'franciscogallazzi@gmail.com',
+      email: 'demo@gmail.com',
       password: '123456',
-      name: 'Francisco',
-      lastname: 'Gallazzi'
+      name: 'Demo',
+      lastname: 'User'
   })
   .then(user => {
       console.log("user", user);
