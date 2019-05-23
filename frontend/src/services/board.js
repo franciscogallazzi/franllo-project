@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const apiBasePath = "http://localhost:3001/api";
+const apiBasePath = proccess.env.BACKEND_HOST + "/api";
 
 const getById = (id) => {
     const params = {
