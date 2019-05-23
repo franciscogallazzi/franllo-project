@@ -1,13 +1,11 @@
 import axios from 'axios';
 
-const apiBasePath = proccess.env.BACKEND_HOST + "/api";
-
 const login = (email, password) => {
-    return axios.post(`${apiBasePath}/users/login`, { email, password})
+    return axios.post(`${process.env.REACT_APP_BACKEND_HOST}/users/login`, { email, password})
 }
 
 const verifyToken = (userId, token) => {
-    return axios.get(`${apiBasePath}/users/${userId}`, {
+    return axios.get(`${process.env.REACT_APP_BACKEND_HOST}/users/${userId}`, {
         headers: {
             authorization: token
         }

@@ -1,7 +1,5 @@
 import axios from 'axios';
 
-const apiBasePath = proccess.env.BACKEND_HOST + "/api";
-
 const getAllByBoardId = (boardId) => {
     const params = {
         filter: {
@@ -16,7 +14,7 @@ const getAllByBoardId = (boardId) => {
             
         }}
     }
-    return axios.get(`${apiBasePath}/boards/${id}`,{params}) 
+    return axios.get(`${process.env.REACT_APP_BACKEND_HOST}/boards/${id}`,{params}) 
 }
 
 export default {
