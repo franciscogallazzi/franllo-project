@@ -6,7 +6,7 @@ import {connect} from 'react-redux';
 
 import {getById} from '../redux/actions/board';
 
-import {addList} from '../redux/actions/list';
+import {addList, updateList} from '../redux/actions/list';
 
 import {
     updateActivity, 
@@ -15,7 +15,6 @@ import {
 
 
 const mapStateToProps = (state) => {
-    console.log("state board", state);
     return {
         board: state.board,
         lists: state.lists,
@@ -36,7 +35,8 @@ const mapDispatchToProps = (dispatch) => {
         },
         addList: (data) => {
             dispatch(addList(data))
-        }
+        },
+        updateList: (id, data) => dispatch(updateList(id, data))
     }
 }
 

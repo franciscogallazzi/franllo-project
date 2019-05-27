@@ -20,7 +20,6 @@ class Login extends React.Component {
     }
 
     onSubmit(values, { setSubmitting }) {
-        console.log("props", this.props)
         this.props.onLoginHandle(values.email, values.password)
     }
 

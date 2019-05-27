@@ -19,14 +19,7 @@ class Activity extends React.Component {
     }
 
     addActity(title){
-        /*this.props.edit(this.props.data.id, {title});
-        this.setState({
-            editMode: false,
-            title: title
-        })*/
-        console.log("title", title);
         this.props.onSubmit({title});
-        
     }
 
     cancelEdit(){

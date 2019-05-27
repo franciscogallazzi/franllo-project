@@ -10,6 +10,9 @@ import {
 import Activity from './activijty';
 
 import ActivityAdd from './activijty-add';
+import ListHeader from './list-header';
+
+
 
 const style = {
     width: '272px',
@@ -31,6 +34,7 @@ class List extends React.Component {
         this.addActivity = this.addActivity.bind(this);
         this.onSubit = this.onSubit.bind(this);
         this.onDimiss = this.onDimiss.bind(this);
+        this.listNameUpdate = this.listNameUpdate.bind(this);
     }
 
     componentDidMount(){
@@ -62,26 +66,35 @@ class List extends React.Component {
         })
     }
 
+    listNameUpdate(name) {
+        this.props.updateList(this.props.data.id,{name})
+    }
+
     render() {
         const {data, editActivity, activities} = this.props;
         const {addActivity} = this.state;
 
         return (
             <Card style={style}>
-                <CardHeader>{data.name}</CardHeader>
-                    <ListGroup style={{maxHeight:'65vh', overflow:'auto'}}>
-                        {activities.map((activity, i)=>(
-                            <Activity key={i} data={activity} edit={editActivity}/>
-                        ))}
+                <CardHeader>
+                    <ListHeader 
+                        name={data.name} 
+                        onSubmit={this.listNameUpdate}
+                        />
+                </CardHeader>
+                <ListGroup style={{maxHeight:'65vh', overflow:'auto'}}>
+                    {activities.map((activity, i)=>(
+                        <Activity key={i} data={activity} edit={editActivity}/>
+                    ))}
 
-                        {addActivity && 
-                        <ActivityAdd 
-                            onSubmit={this.onSubit}
-                            onDimiss={this.onDimiss}
-                        />}
-                    </ListGroup>
+                    {addActivity && 
+                    <ActivityAdd 
+                        onSubmit={this.onSubit}
+                        onDimiss={this.onDimiss}
+                    />}
+                </ListGroup>
 
-                    <Button onClick={this.addActivity}>+</Button>
+                <Button onClick={this.addActivity}>+</Button>
             </Card>
         )
     }
