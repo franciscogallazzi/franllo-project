@@ -1,22 +1,10 @@
 import axios from 'axios';
 
-const getAllByBoardId = (boardId) => {
-    const params = {
-        filter: {
-        include: {
-            relation:'lists',
-            scope: {
-                include: {
-                    relation:'activities'
-                }
-
-            }
-            
-        }}
-    }
-    return axios.get(`${process.env.REACT_APP_BACKEND_HOST}/boards/${id}`,{params}) 
+const create = (data) => {
+    
+    return axios.post(`${process.env.REACT_APP_BACKEND_HOST}/lists`,data) 
 }
 
 export default {
-    getById
+    create
 }

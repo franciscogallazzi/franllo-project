@@ -3,7 +3,7 @@ import React from 'react';
 import Header from './header';
 import List from './list';
 
-import {Button} from 'reactstrap'
+import ListAdd from './list-add';
 
 const style = {
     userSelect: 'none',
@@ -22,19 +22,29 @@ const style = {
 
 class Board extends React.Component {
 
+    constructor(props){
+        super(props);
+    }
+
     render(){
         return (
             <div>
                 <Header title={this.props.board.name} />
                 <div style={style}>
-                    {this.props.lists.map(list => (
-                        <List 
+                    {this.props.lists.map((list, i) => (
+                        <List
+                            key={i}
                             data={list} 
                             activities={this.props.activities.filter(activity => activity.listId == list.id)}
                             editActivity={this.props.editActivity}
                             addActivity={this.props.addActivity}
                             />
                     )) }
+                    <ListAdd 
+                        onAddList={data => {
+                            this.props.addList({...data, boardId: this.props.board.id})
+                        }
+                    }/>
                 </div>
             </div>
         )
