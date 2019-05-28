@@ -1,7 +1,6 @@
 import authService from '../../services/auth';
 
 import {
-    AUTH_REQUEST_LOGIN,
     AUTH_SUCCESS_LOGIN,
     AUTH_FAILED_LOGIN,
     AUTH_VALID_TOKEN,

@@ -10,7 +10,6 @@ import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom'
 
 const mapStateToProps = (state) => {
-    console.log("State", state);
     return {
       requestLogin: state.auth.requestLogin,
       isAuthenticated: state.auth.isAuthenticated

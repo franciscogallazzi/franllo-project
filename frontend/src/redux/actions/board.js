@@ -9,7 +9,6 @@ import {
 } from '../constants';
 
 export const getById = function (id) {
-    console.log("ID", id);
     return function(dispatch) {
         dispatch({
             type:BOARD_REQUEST_BYID
@@ -48,7 +47,6 @@ export const getById = function (id) {
 }
 
 function successGetById(payload) {
-    console.log("successGetById", payload)
     return {
         type: BOARD_SUCCESS_BYID,
         payload

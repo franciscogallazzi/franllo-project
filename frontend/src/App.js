@@ -10,10 +10,7 @@ import {connect} from 'react-redux'
 
 import {
   BrowserRouter as Router,
-  Route,
-  Link,
-  Redirect,
-  withRouter
+  Route
 } from "react-router-dom";
 
 const mapStateToProps = (state) => {

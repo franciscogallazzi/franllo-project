@@ -22,10 +22,6 @@ const style = {
 
 class Board extends React.Component {
 
-    constructor(props){
-        super(props);
-    }
-
     render(){
         return (
             <div>
@@ -35,9 +31,10 @@ class Board extends React.Component {
                         <List
                             key={i}
                             data={list} 
-                            activities={this.props.activities.filter(activity => activity.listId == list.id)}
+                            activities={this.props.activities.filter(activity => activity.listId === list.id)}
                             editActivity={this.props.editActivity}
                             addActivity={this.props.addActivity}
+                            updateList={this.props.updateList}
                             />
                     )) }
                     <ListAdd 

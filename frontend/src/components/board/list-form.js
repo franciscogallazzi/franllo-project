@@ -32,7 +32,6 @@ class ListForm extends React.Component {
     onSubmit(event) {
         event.preventDefault();
         if (this.state.value.trim().length) {
-            console.log("form", this.state.value)
             this.props.onSubmit(this.state.value);
             this.setState({
                 value: ''
@@ -48,9 +47,9 @@ class ListForm extends React.Component {
 
         const {value} = this.state;
         return(
-            <Form onSubmit={this.onSubmit} autoComplete={false}>
+            <Form onSubmit={this.onSubmit} autoComplete={"off"}>
                 <Input 
-                    autoComplete={false}
+                    autoComplete={"off"}
                     name="value"
                     value={value}
                     onChange={ event => this.setState({value : event.target.value})}
