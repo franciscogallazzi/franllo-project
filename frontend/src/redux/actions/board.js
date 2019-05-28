@@ -4,9 +4,20 @@ import {
     BOARD_REQUEST_BYID,
     BOARD_SUCCESS_BYID,
     BOARD_FAILED_BYID,
+    BOARD_GET_FOR_ME,
+    BOARD_CREATE,
+    BOARD_CREATE_AND_REDIRECT_TO_BOARD,
     LIST_GET_ALL,
     ACTIVITY_GET_ALL
 } from '../constants';
+
+export const resetCurrentBoard = function() {
+    return function(dispatch){
+        dispatch(successGetById({}));
+        dispatch(listsGetAll([]));
+        dispatch(activitiesGetAll([]));
+    }
+}
 
 export const getById = function (id) {
     return function(dispatch) {
@@ -43,6 +54,39 @@ export const getById = function (id) {
 
             })
             .catch(err => dispatch(failedGetById()))
+    }
+}
+
+export const getAllForMe = function(){
+    return function(dispatch){
+        boardService.getAllForMe()
+            .then(response => dispatch({
+                type: BOARD_GET_FOR_ME,
+                payload: response.data
+            }))
+    }
+}
+
+export const create = function(data){
+    return function(dispatch){
+        boardService.create(data)
+            .then(response => dispatch({
+                type: BOARD_CREATE,
+                payload: response.data
+            }))
+    }
+}
+
+export const createAndRedirectToBoard = function(data, history){
+    return function(dispatch){
+        boardService.create(data)
+            .then(response => {
+                dispatch({
+                    type: BOARD_CREATE,
+                    payload: response.data
+                })
+                history.push(`/board/${response.data.id}`)
+            })
     }
 }
 

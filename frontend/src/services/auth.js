@@ -5,7 +5,9 @@ const login = (email, password) => {
 }
 
 const verifyToken = (userId, token) => {
+
     return axios.get(`${process.env.REACT_APP_BACKEND_HOST}/users/${userId}`, {
+        include:'userInfo',
         headers: {
             authorization: token
         }

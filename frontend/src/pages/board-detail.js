@@ -4,7 +4,7 @@ import Board from '../components/board/board';
 
 import {connect} from 'react-redux';
 
-import {getById} from '../redux/actions/board';
+import {getById, resetCurrentBoard} from '../redux/actions/board';
 
 import {addList, updateList} from '../redux/actions/list';
 
@@ -36,18 +36,24 @@ const mapDispatchToProps = (dispatch) => {
         addList: (data) => {
             dispatch(addList(data))
         },
-        updateList: (id, data) => dispatch(updateList(id, data))
+        updateList: (id, data) => dispatch(updateList(id, data)),
+        resetCurrentBoard: () => dispatch(resetCurrentBoard())
     }
 }
 
 class CurrentBoard extends React.Component {
-    
+
     componentDidMount(){
-        this.props.getById(1);
+        this.props.getById(this.props.match.params.boardId)
+    }
+
+    componentWillUnmount(){
+        this.props.resetCurrentBoard();
     }
 
     render(){
-        if (!this.props.board) return null;
+
+        if (!this.props.board) return <div>BUSCANDO DATA</div>
         
         return(
             <Board {...this.props}/>

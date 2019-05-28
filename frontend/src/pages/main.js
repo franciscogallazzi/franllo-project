@@ -9,7 +9,8 @@ import {
 import AppNavBar from '../components/nav-bar/nav-bar';
 
 import Boards from './boards';
-import CurrentBoard from './current-board';
+import BoardDetail from './board-detail';
+import homeRedirect from './home-redirect';
 
 
 export default (props) => (
@@ -17,8 +18,9 @@ export default (props) => (
         <AppNavBar />
         <Router>
             <div>
-                <Route path="/" exact component={CurrentBoard} />
-                <Route path="/boards" component={Boards} />
+                <Route path="/" exact component={homeRedirect} />
+                <Route path="/my-boards" component={Boards} />
+                <Route path="/board/:boardId" component={BoardDetail} />
             </div>
         </Router>
     </div>

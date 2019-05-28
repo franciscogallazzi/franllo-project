@@ -17,6 +17,17 @@ const getById = (id) => {
     return axios.get(`${process.env.REACT_APP_BACKEND_HOST}/boards/${id}`,{params}) 
 }
 
+
+const getAllForMe = () => {
+    return axios.get(`${process.env.REACT_APP_BACKEND_HOST}/boards/for-me`) 
+}
+
+const create = (data) => {
+    return axios.post(`${process.env.REACT_APP_BACKEND_HOST}/boards`,data) 
+}
+
 export default {
-    getById
+    getById,
+    getAllForMe,
+    create
 }

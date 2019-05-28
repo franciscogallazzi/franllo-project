@@ -1,27 +1,17 @@
 {
-  "name": "Board",
+  "name": "UserInfo",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {
     "validateUpsert": true
   },
-  "mixins": {
-    "AuditUser": {}
-  },
   "properties": {
-    "name": {
-      "type": "string",
-      "required": true
+    "currentBoard": {
+      "type": "number"
     }
   },
   "validations": [],
-  "relations": {
-    "lists": {
-      "type": "hasMany",
-      "model": "List",
-      "foreignKey": ""
-    }
-  },
+  "relations": {},
   "acls": [
     {
       "accessType": "*",
@@ -40,10 +30,7 @@
       "principalType": "ROLE",
       "principalId": "$authenticated",
       "permission": "ALLOW",
-      "property": [
-        "create",
-        "findByMe"
-      ]
+      "property": "create"
     }
   ],
   "methods": {}

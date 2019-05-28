@@ -1,6 +1,6 @@
 import authService from '../../services/auth';
-
-import {
+import {getUserInfo} from '../actions/user';
+import{
     AUTH_SUCCESS_LOGIN,
     AUTH_FAILED_LOGIN,
     AUTH_VALID_TOKEN,
@@ -11,7 +11,8 @@ export const requestLogin = function(email, password, history) {
     return function(dispatch, state) {
         authService.login(email, password)
             .then(response => {
-                return dispatch(successLogin(response.data))
+                dispatch(successLogin(response.data))
+                dispatch(getUserInfo(response.data.userId))
             })
             .catch(err => {
                 console.log("err", err);
@@ -40,6 +41,7 @@ export const verifyToken = function(userId, token) {
         authService.verifyToken(userId, token)
             .then(response => {
                 dispatch(validToken(response.data))
+                dispatch(getUserInfo(userId))
             })
             .catch(err => {
                 dispatch(invalidToken())

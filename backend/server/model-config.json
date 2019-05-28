@@ -14,7 +14,8 @@
     ]
   },
   "User": {
-    "dataSource": "db"
+    "dataSource": null,
+    "public": false
   },
   "AccessToken": {
     "dataSource": "db",
@@ -44,6 +45,14 @@
     "public": true
   },
   "Activity": {
+    "dataSource": "db",
+    "public": true
+  },
+  "UserInfo": {
+    "dataSource": "db",
+    "public": true
+  },
+  "AppUser": {
     "dataSource": "db",
     "public": true
   }
