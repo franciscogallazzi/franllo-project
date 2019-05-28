@@ -1,6 +1,7 @@
 'use strict';
 
 module.exports = function (app, cb) {
+    return cb();
   let User = app.models.User;
 
   User.create({

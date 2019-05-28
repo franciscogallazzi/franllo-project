@@ -6,6 +6,8 @@ import {
     AUTH_INVALID_TOKEN
 } from '../constants';
 
+import {setToken} from '../../services/global-config';
+
 const initialState = {
     isTokenVerified: false,
     isAuthenticated: false,
@@ -26,6 +28,7 @@ export default function authReducer(state = initialState, action) {
 
             localStorage.setItem("token", action.payload.id);
             localStorage.setItem("userId", action.payload.userId);
+            setToken(action.payload.id)
 
             return Object.assign({}, state, {
                 userId: action.payload.userId,
@@ -38,6 +41,7 @@ export default function authReducer(state = initialState, action) {
             return initialState;  
             
         case AUTH_VALID_TOKEN:
+            setToken(localStorage.getItem("token"));
             return Object.assign({}, state, {
                 isAuthenticated: true,
                 isTokenVerified: true,
