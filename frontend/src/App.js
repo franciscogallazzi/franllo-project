@@ -51,7 +51,7 @@ class App extends React.Component {
           <PrivateRoute path="/my-boards" component={MainPage} />
           <PrivateRoute path="/board/:boardId" component={MainPage} />
           <Route path="/login" exact component={AuthPage} />
-          <Route path="/sing-up" exact component={AuthPage} />
+          <Route path="/sign-up" exact component={AuthPage} />
         </div>
       </Router>
     );

@@ -1,6 +1,6 @@
 import React from 'react';
 import Login from '../containers/login';
-import SingUp from '../components/singup/singup';
+import SignUp from '../components/signup/signup';
 
 import { Container, Row, Col } from 'reactstrap';
 
@@ -42,10 +42,8 @@ const AuthPage = ({isAuthenticated, location}) => {
 
                     <Router>
                         <div>
-                            <Route path="/login">
-                                <Login />
-                            </Route> 
-                            <Route path="/sing-up" component={SingUp} />
+                            <Route path="/login" component={Login} />
+                            <Route path="/sign-up" component={SignUp} />
                         </div>
                     </Router>
                     

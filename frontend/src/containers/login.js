@@ -1,4 +1,11 @@
+import React from 'react'
+
 import Login from '../components/login/login';
+
+import {
+  Button
+
+} from 'reactstrap';
 
 import {
     requestLogin
@@ -7,7 +14,7 @@ import {
 
 import {connect} from 'react-redux';
 
-import {withRouter} from 'react-router-dom'
+import {withRouter, Link} from 'react-router-dom'
 
 const mapStateToProps = (state) => {
     return {
@@ -27,7 +34,19 @@ const mapDispatchToProps = (dispatch, {history}) => {
     }
   }
 
-export default withRouter(connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(Login))
+const ConnectedLogin = withRouter(connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Login));
+
+const LoginView = () => (
+  <div> 
+    <Link to="/sign-up">
+      <Button outline style={{marginBottom:'100px'}}>Sign Up</Button>
+    </Link>
+   
+    <ConnectedLogin />
+  </div>
+)
+
+export default LoginView;

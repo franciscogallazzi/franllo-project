@@ -54,7 +54,7 @@ const LoginForm = ({
 
         <Button type="submit" size="md" style={{ width: '100%' }} >Login</Button>
         
-        <a href="./#" className="float-right">Forgot Password</a>
+        <a href="./#" className="float-right">Forgot Password?</a>
 
     </Form>
 )
